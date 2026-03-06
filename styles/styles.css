@@ -1,3 +1,4 @@
+/* Genel Ayarlar ve Grup Seçici */
 body, h2, p {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -19,6 +20,7 @@ body {
     overflow: hidden;
 }
 
+/* Navigasyon - Hiyerarşik Seçici */
 nav {
     display: flex;
     justify-content: space-between;
@@ -33,7 +35,7 @@ nav ul {
 }
 
 nav ul li {
-    display: inline-block;
+    display: inline-block; /* Yatay menü için  */
     margin-left: 15px;
 }
 
@@ -42,9 +44,10 @@ nav ul li a {
     color: #555;
     padding: 8px 12px;
     border-radius: 4px;
-    transition: 0.3s;
+    transition: 0.3s; /* Hover efekti geçişi */
 }
 
+/* Hover Efekti  */
 nav ul li a:hover {
     background-color: #8da9d6;
     color: white;
@@ -55,10 +58,12 @@ nav ul li a:hover {
     color: white !important;
 }
 
+/* Header Alanı */
 header {
     padding: 30px;
 }
 
+/* İki Sütunlu Düzen  */
 .content-wrapper {
     display: flex;
     padding: 0 30px 30px 30px;
@@ -69,20 +74,21 @@ header {
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    width: 50%;
+    width: 50%; /* Sütun genişlikleri  */
 }
 
-
+/* Kutu Renkleri */
 .main-content {
     background-color: #fdf2d9;
     border-color: #e0d0b0;
 }
 
 .sidebar {
-    background-color: #e6f2f7;
+    background-color: #e6f2f7; /* Mavimsi ton */
     border-color: #c8d9e0;
 }
 
+/* Metin Düzenlemeleri*/
 .main-content p, .sidebar p {
     font-size: 14px;
     line-height: 1.6;
@@ -90,6 +96,7 @@ header {
     text-align: justify;
 }
 
+/* Footer Alanı*/
 footer {
     text-align: center;
     padding: 20px;
