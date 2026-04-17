@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birim Dönüştürücü</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+    background-color: #f4f4f9;
+  }
+  .container { 
+    max-width: 350px; 
+    margin: auto; 
+    background: white; 
+    padding: 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+  }
+  h2 { margin-top: 0; }
+  label { font-size: 14px; color: #333; }
+  select, input, button { 
+    width: 100%; 
+    padding: 10px; 
+    margin: 8px 0 20px 0; 
+    box-sizing: border-box; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button { 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    font-weight: bold;
+    cursor: pointer; 
+  }
+  button:hover { background-color: #0056b3; }
+  .result { 
+    background-color: #d4edda; 
+    color: #155724; 
+    padding: 15px; 
+    text-align: center; 
+    font-weight: bold; 
+    border-radius: 4px; 
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Birim Dönüştürücü</h2>
+  
+  <label>Değer Giriniz:</label>
+  <input type="number" id="deger" value="50">
+  
+  <label>Dönüşüm Tipi:</label>
+  <select id="donusumTipi">
+      <option value="c_f">Celsius -> Fahrenheit</option>
+      <option value="m_km">Metre -> Kilometre</option>
+      <option value="kg_g">Kilogram -> Gram</option>
+  </select>
+
+  <button onclick="donustur()">Hesapla</button>
+  
+  <div id="sonucAlani" class="result" style="display:none;"></div>
+</div>
+
+<script>
+function donustur() {
+  const deger = parseFloat(document.getElementById('deger').value);
+  const tip = document.getElementById('donusumTipi').value;
+  let sonuc = 0;
+
+  if (isNaN(deger)) {
+      alert("Lütfen geçerli bir değer giriniz.");
+      return;
+  }
+
+  if (tip === "c_f") {
+      sonuc = (deger * 9/5) + 32;
+  } else if (tip === "m_km") {
+      sonuc = deger / 1000;
+  } else if (tip === "kg_g") {
+      sonuc = deger * 1000;
+  }
+
+  document.getElementById('sonucAlani').innerText = `Sonuç: ${sonuc.toLocaleString('tr-TR')}`;
+  document.getElementById('sonucAlani').style.display = "block";
+}
+</script>
+
+</body>
+</html>
