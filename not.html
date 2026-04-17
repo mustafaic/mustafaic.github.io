@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Öğrenci Not Hesaplama</title>
+<style>
+  body { 
+    font-family: Arial, sans-serif; 
+    padding: 20px; 
+    background-color: #f9f9f9;
+  }
+  .container { 
+    max-width: 400px; 
+    margin: auto; 
+    background: white; 
+    padding: 20px; 
+    border: 1px solid #ddd;
+  }
+  input, button { 
+    width: 100%; 
+    padding: 10px; 
+    margin: 5px 0 15px 0; 
+    box-sizing: border-box; 
+    border: 1px solid #ccc;
+  }
+  button {
+    background-color: #efefef;
+    cursor: pointer;
+  }
+  .result { 
+    background-color: #f0f0f0; 
+    padding: 15px; 
+    margin-top: 15px; 
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <input type="text" id="adSoyad" placeholder="Ad Soyad">
+  <input type="number" id="vize" placeholder="Vize Notu">
+  <input type="number" id="final" placeholder="Final Notu">
+  <button onclick="hesapla()">Hesapla</button>
+  
+  <div id="sonucAlani" class="result" style="display:none;"></div>
+</div>
+
+<script>
+function hesapla() {
+  const adSoyad = document.getElementById('adSoyad').value;
+  const vize = parseFloat(document.getElementById('vize').value);
+  const final = parseFloat(document.getElementById('final').value);
+
+  if (isNaN(vize) || isNaN(final)) {
+      alert("Lütfen geçerli notlar giriniz.");
+      return;
+  }
+
+  const ortalama = (vize * 0.4) + (final * 0.6);
+  let harfNotu = "";
+
+  if (ortalama >= 90) harfNotu = "AA";
+  else if (ortalama >= 80) harfNotu = "BA";
+  else if (ortalama >= 70) harfNotu = "BB";
+  else if (ortalama >= 60) harfNotu = "CB";
+  else if (ortalama >= 50) harfNotu = "CC";
+  else if (ortalama >= 40) harfNotu = "DC";
+  else if (ortalama >= 30) harfNotu = "DD";
+  else harfNotu = "FF";
+
+  const durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+  const sonucHTML = `
+      <h3>${adSoyad}</h3>
+      Ortalama: ${ortalama.toFixed(2)}<br>
+      Harf Notu: ${harfNotu}<br>
+      Durum: ${durum}
+  `;
+
+  document.getElementById('sonucAlani').innerHTML = sonucHTML;
+  document.getElementById('sonucAlani').style.display = "block";
+}
+</script>
+
+</body>
+</html>
